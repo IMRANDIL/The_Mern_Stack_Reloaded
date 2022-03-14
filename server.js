@@ -9,7 +9,7 @@ const cors = require('cors')
 const app = express();
 
 
-
+const testroute = require('./router/test')
 
 //middlewares....
 
@@ -23,7 +23,9 @@ app.use(express.urlencoded({ extended: true }))
 
 
 
+//routes.....
 
+app.use('/api', testroute)
 
 
 
@@ -33,7 +35,7 @@ app.use(express.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT || 3000;
 
-
+//database connection ....
 
 mongoose.connect(process.env.URI).then(() => {
     console.log(`Db connected😄`);
