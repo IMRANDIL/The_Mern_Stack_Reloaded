@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const { registerUser } = require('../controllers/user');
 
-
+const { userRegisterValidator } = require('../middlewares/user')
 
 
 //import controllers.....
@@ -11,7 +11,7 @@ const { registerUser } = require('../controllers/user');
 //import middlewares....
 
 
-router.post('/register', registerUser)
+router.post('/register', userRegisterValidator, registerUser)
 
 
 
