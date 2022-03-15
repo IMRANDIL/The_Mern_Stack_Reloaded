@@ -4,12 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan')
 const cors = require('cors')
-
+const cookieParser = require('cookie-parser');
+const expressValidator = require('express-validator')
 
 const app = express();
 
 
-const testroute = require('./router/test')
+const userRoute = require('./router/user')
 
 //middlewares....
 
@@ -19,13 +20,15 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(expressValidator())
 
 
 
 //routes.....
 
-app.use('/api', testroute)
+app.use('/user', userRoute)
 
 
 
