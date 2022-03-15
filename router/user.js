@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 
-const { usercontroller } = require('../controllers/user');
+const { registerUser } = require('../controllers/user');
 
 
 
@@ -11,7 +11,7 @@ const { usercontroller } = require('../controllers/user');
 //import middlewares....
 
 
-router.post('/register', usercontroller)
+router.post('/register', registerUser)
 
 
 

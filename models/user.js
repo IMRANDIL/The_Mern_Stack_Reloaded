@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
 
 //virtual field...
 
-userSchema.virtual('password').set((password) => {
+userSchema.virtual('password').set(function (password) {
 
     //create temporary variable....called _password...
 
