@@ -1,4 +1,7 @@
 
+const User = require('../models/user')
+
+
 
 exports.userRegisterValidator = (req, res, next) => {
 
@@ -43,5 +46,46 @@ exports.userRegisterValidator = (req, res, next) => {
     //proceed to next middleware...
 
     next()
+
+}
+
+
+
+
+
+
+//Another middleware......
+
+
+
+
+
+
+exports.userById = (req, res, next) => {
+
+    try {
+
+        User.findById(req._id).exec((err, user) => {
+
+
+            if (err || !user) {
+                return res.status(404).json({
+                    error: 'User not found!'
+                })
+            }
+
+            //and user object in req with all user info...
+
+            req.user = user;
+
+            next()
+
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+
+
 
 }

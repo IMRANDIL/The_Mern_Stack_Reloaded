@@ -1,9 +1,12 @@
 const router = require('express').Router();
 
 
-const { registerUser } = require('../controllers/user');
+const { registerUser, loginUser, userLogout, getLoggedInUser } = require('../controllers/user');
 
-const { userRegisterValidator } = require('../middlewares/user')
+const { userRegisterValidator, userById } = require('../middlewares/user');
+
+
+const { verifyToken } = require('../middlewares/auth')
 
 
 //import controllers.....
@@ -14,10 +17,13 @@ const { userRegisterValidator } = require('../middlewares/user')
 router.post('/register', userRegisterValidator, registerUser)
 
 
+router.post('/login', loginUser);
 
 
+router.get('/logout', userLogout)
 
 
+router.get('/', verifyToken, userById, getLoggedInUser)
 
 
 module.exports = router;
