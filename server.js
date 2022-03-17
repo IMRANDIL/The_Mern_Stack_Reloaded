@@ -15,7 +15,7 @@ const userRoute = require('./router/user')
 //middlewares....
 
 
-app.use(cors({ credentials: true, origin: true }))
+app.use(cors({ credentials: true, preflightContinue: true, origin: 'https://the-auth-front-end.vercel.app' }))
 
 app.use(morgan('dev'))
 app.use(express.json());
